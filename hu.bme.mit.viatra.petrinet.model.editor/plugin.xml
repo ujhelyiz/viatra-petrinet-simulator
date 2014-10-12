@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated petrinet -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="hu.bme.mit.viatra.petrinet.model.petrinet.presentation.PetriNetModelWizardID"
+            name="%_UI_PetriNetModelWizard_label"
+            class="hu.bme.mit.viatra.petrinet.model.petrinet.presentation.PetriNetModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PetriNetModelFile.gif">
+         <description>%_UI_PetriNetModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated petrinet -->
+      <editor
+            id="hu.bme.mit.viatra.petrinet.model.petrinet.presentation.PetriNetEditorID"
+            name="%_UI_PetriNetEditor_label"
+            icon="icons/full/obj16/PetriNetModelFile.gif"
+            extensions="petrinet"
+            class="hu.bme.mit.viatra.petrinet.model.petrinet.presentation.PetriNetEditor"
+            contributorClass="hu.bme.mit.viatra.petrinet.model.petrinet.presentation.PetriNetActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

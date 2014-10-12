@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="hu.bme.mit.viatra.petrinet.design.Activator"
+               id="hu.bme.mit.viatra.petrinet.design"
+	       name="PetriNet">
+    </component>
+  </extension>
+</plugin>

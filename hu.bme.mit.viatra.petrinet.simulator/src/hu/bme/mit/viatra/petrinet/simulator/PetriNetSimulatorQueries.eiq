@@ -1,0 +1,66 @@
+package hu.bme.mit.viatra.petrinet.simulator
+
+import "http://inf.mit.bme.hu/petrinet/2014"
+
+// 'Place' is a source place for transition 'Transition'.
+@Edge(source = pl, target = t)
+pattern sourcePlace(t : Transition, pl : Place) {
+	PetriNet.transitions(net, t);
+	PetriNet.places(net, pl);
+	Place.outArcs(pl, arc);
+	PTArc.target(arc, t);
+}
+
+//pattern sourcePlaceInhibitor(Transition, Place) {
+//		'PetriNet'(PN);
+//		'PetriNet'.'Transition'(Transition);
+//		'PetriNet'.'transitions'(X1, PN, Transition);
+//		'PetriNet'.'Place'(Place);
+//		'PetriNet'.'places'(X2, PN, Place);
+//		'PetriNet'.'Place'.'InhibitorArc'(OutArc, Place, Transition);
+//	}
+
+/** 'Place' is a target place for transition 'Transition'.  */
+@Edge(source = t, target = pl)
+pattern targetPlace(t : Transition, pl : Place) {
+	PetriNet.transitions(n, t);
+	PetriNet.places(n, pl);
+	Transition.outArcs(t, arc);
+	TPArc.target(arc, pl);
+}
+
+// 'Place' contains a token 'Token' linked to it
+pattern placeWithToken(pl : Place, to : Token) {
+	Place.tokens(pl, to);
+}
+
+pattern placeWithToken2(pl : Place) {
+	find placeWithToken(pl, _);
+}
+
+
+pattern place(pl : Place) {
+	Place(pl);
+}
+
+@Item(item = pl, label = "$pl.name$ : $no$")
+pattern numberOfTokens(pl : Place, no) {
+	no == count find placeWithToken(pl, _);
+}
+
+@Item(item = t, label = "$t.name$")
+@Format(color = "#ff0000")
+pattern notFireable(t : Transition) {
+	find sourcePlace(t, Place);
+	neg find placeWithToken2(Place);
+	//} or {
+	//	find sourcePlaceInhibitor(t,Place);
+	//	find placeWithToken2(Place);
+}
+
+// 'Transition' is fireable
+@Item(item = t, label = "$t.name$")
+@Format(color = "#00ff00")
+pattern fireableTransition(t : Transition) {
+	neg find notFireable(t);
+}
