@@ -5,11 +5,11 @@ import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
 import org.eclipse.incquery.runtime.evm.api.RuleEngine
 import org.eclipse.incquery.runtime.evm.specific.RuleEngines
 import org.eclipse.incquery.runtime.evm.specific.event.IncQueryEventRealm
-import org.eclipse.viatra2.emf.runtime.modelmanipulation.IModelManipulations
-import org.eclipse.viatra2.emf.runtime.modelmanipulation.SimpleModelManipulations
-import org.eclipse.viatra2.emf.runtime.rules.batch.BatchTransformationRuleFactory
-import org.eclipse.viatra2.emf.runtime.rules.batch.BatchTransformationStatements
-import org.eclipse.viatra2.emf.runtime.transformation.batch.BatchTransformation
+import org.eclipse.viatra.emf.runtime.modelmanipulation.IModelManipulations
+import org.eclipse.viatra.emf.runtime.modelmanipulation.SimpleModelManipulations
+import org.eclipse.viatra.emf.runtime.rules.batch.BatchTransformationRuleFactory
+import org.eclipse.viatra.emf.runtime.rules.batch.BatchTransformationStatements
+import org.eclipse.viatra.emf.runtime.transformation.batch.BatchTransformation
 
 class PetriNetSimulator {
 	extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
